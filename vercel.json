@@ -18,11 +18,8 @@
     "NODE_ENV": "production"
   },
   "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs22.x"
-    },
-    "**/*.js": {
-      "runtime": "nodejs22.x"
+    "index.js": {
+      "runtime": "@vercel/node@3.0.0"
     }
   }
 }
