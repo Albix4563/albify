@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Nuova palette di colori blu */
+  --background: 220 70% 5%;
+  --foreground: 213 100% 96%;
+  --muted: 220 60% 15%;
+  --muted-foreground: 213 40% 65%;
+  --popover: 220 70% 7%;
+  --popover-foreground: 213 100% 96%;
+  --card: 220 70% 8%;
+  --card-foreground: 213 100% 96%;
+  --border: 220 50% 20%;
+  --input: 220 50% 20%;
+  --primary: 210 100% 50%;
+  --primary-foreground: 213 100% 96%;
+  --secondary: 225 100% 60%;
+  --secondary-foreground: 213 100% 96%;
+  --accent: 190 80% 50%;
+  --accent-foreground: 213 100% 96%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 210 100% 50%;
+  --radius: 0.5rem;
+  
+  /* Albify specific colors */
+  --albify-bg: 220 70% 5%;
+  --albify-card: 220 70% 9%;
+  --albify-hover: 220 60% 18%;
+  --albify-primary: 210 100% 50%; 
+  --albify-secondary: 225 100% 60%;
+  --albify-accent: 190 80% 50%;
+  --albify-accent-blue: 210 100% 50%;
+  --albify-divider: 220 50% 20%;
+  
+  /* Sidebar colors */
+  --sidebar-background: 220 80% 3%;
+  --sidebar-foreground: 213 100% 96%;
+  --sidebar-primary: 210 100% 50%;
+  --sidebar-primary-foreground: 213 100% 96%;
+  --sidebar-accent: 190 80% 50%;
+  --sidebar-accent-foreground: 213 100% 96%;
+  --sidebar-border: 220 50% 15%;
+  --sidebar-ring: 210 100% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* Fix per l'input text fields in modali scure */
+  .dark-mode-input {
+    color-scheme: dark;
+  }
+  
+  input, textarea {
+    color: white !important;
+    caret-color: white !important;
+  }
+}
+
+/* Custom styles for Albify */
+.music-card {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.music-card:hover {
+  background-color: hsl(var(--albify-hover));
+  transform: translateY(-5px);
+}
+
+.sidebar-link {
+  transition: color 0.3s ease;
+}
+
+.player-progress {
+  height: 4px;
+  background-color: hsl(var(--albify-divider));
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.player-progress-filled {
+  height: 100%;
+  background-color: hsl(var(--albify-primary));
+  border-radius: 2px;
+  position: relative;
+}
+
+.player-progress-filled:hover::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.player-controls button {
+  transition: transform 0.2s ease;
+}
+
+.player-controls button:hover {
+  transform: scale(1.1);
+}
+
+.volume-slider {
+  height: 4px;
+  background-color: hsl(var(--albify-divider));
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.volume-slider-filled {
+  height: 100%;
+  background-color: hsl(var(--albify-primary));
+  border-radius: 2px;
+}
