@@ -1,14 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es2022",
+    "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./client/src/*"],
       "@shared/*": ["./shared/*"]
-    }
+    },
+    "lib": ["ES2022"],
+    "esModuleInterop": true
   },
   "include": ["server/**/*.ts", "shared/**/*.ts"],
   "exclude": ["node_modules"]
