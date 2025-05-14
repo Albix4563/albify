@@ -1,0 +1,33 @@
+{
+  "playlists": {
+    "14": {
+      "id": 14,
+      "created_at": "2025-05-14T11:44:16.637Z",
+      "name": "Top Hits",
+      "description": "I brani più popolari selezionati per te",
+      "user_id": 1
+    },
+    "15": {
+      "id": 15,
+      "created_at": "2025-05-14T11:44:16.643Z",
+      "name": "Top Hits",
+      "description": "I brani più popolari selezionati per te",
+      "user_id": 2
+    },
+    "16": {
+      "id": 16,
+      "created_at": "2025-05-14T11:44:16.643Z",
+      "name": "Top Hits",
+      "description": "I brani più popolari selezionati per te",
+      "user_id": 3
+    },
+    "17": {
+      "id": 17,
+      "created_at": "2025-05-14T12:02:28.621Z",
+      "name": "Alberto",
+      "description": null,
+      "user_id": 1
+    }
+  },
+  "playlistIdCounter": 19
+}

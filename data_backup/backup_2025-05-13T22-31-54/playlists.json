@@ -1,0 +1,19 @@
+{
+  "playlists": {
+    "1": {
+      "id": 1,
+      "created_at": "2025-05-13T22:29:29.992Z",
+      "name": "Ciccio",
+      "description": null,
+      "user_id": 1
+    },
+    "2": {
+      "id": 2,
+      "created_at": "2025-05-13T22:29:44.513Z",
+      "name": "ff",
+      "description": null,
+      "user_id": 1
+    }
+  },
+  "playlistIdCounter": 3
+}
