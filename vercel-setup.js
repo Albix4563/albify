@@ -1,67 +1,76 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /**
- * Script di preparazione per il deploy su Vercel
- * Verifica che le chiavi API e le configurazioni del database siano presenti
+ * Script di compatibilità per Vercel
+ * Questo script modifica i file compilati aggiungendo le estensioni .js alle importazioni
+ * necessarie per il corretto funzionamento con ESM in Node.js
  */
-
-// Verifica se le variabili d'ambiente necessarie sono configurate
-const requiredEnvVars = [
-  'YOUTUBE_API_KEY_1',
-  'DATABASE_URL'
-];
-
-// Array per archiviare le variabili mancanti
-const missingVars = [];
-
-// Verifica ciascuna variabile
-requiredEnvVars.forEach(envVar => {
-  if (!process.env[envVar]) {
-    missingVars.push(envVar);
+function fixImports() {
+  try {
+    console.log('🔄 Fixing imports for Vercel compatibility...');
+    
+    // Directory contenenti i file da modificare
+    const serverDir = path.join(__dirname, 'server');
+    const sharedDir = path.join(__dirname, 'shared');
+    
+    // Funzione per gestire ricorsivamente le directory
+    function processDirectory(dir) {
+      const files = fs.readdirSync(dir);
+      
+      for (const file of files) {
+        const filePath = path.join(dir, file);
+        const stats = fs.statSync(filePath);
+        
+        if (stats.isDirectory()) {
+          processDirectory(filePath);
+        } else if (file.endsWith('.ts')) {
+          console.log(`Processing ${filePath}`);
+          let content = fs.readFileSync(filePath, 'utf8');
+          
+          // Aggiungi estensione .js agli import locali
+          content = content.replace(/from\s+['"]([\.\/]{1,2}[^'"]+)['"]/g, (match, importPath) => {
+            // Ignora i percorsi che hanno già un'estensione
+            if (importPath.endsWith('.js') || importPath.endsWith('.json')) {
+              return match;
+            }
+            
+            // Ignora i pacchetti npm (non iniziano con ./ o ../)
+            if (!importPath.startsWith('./') && !importPath.startsWith('../')) {
+              return match;
+            }
+            
+            return `from '${importPath}.js'`;
+          });
+          
+          // Aggiungi estensione .js agli import da @shared/
+          content = content.replace(/from\s+['"](@shared\/[^'"]+)['"]/g, (match, importPath) => {
+            // Ignora i percorsi che hanno già un'estensione
+            if (importPath.endsWith('.js') || importPath.endsWith('.json')) {
+              return match;
+            }
+            
+            return `from '${importPath}.js'`;
+          });
+          
+          fs.writeFileSync(filePath, content);
+        }
+      }
+    }
+    
+    // Processa le directory
+    if (fs.existsSync(serverDir)) processDirectory(serverDir);
+    if (fs.existsSync(sharedDir)) processDirectory(sharedDir);
+    
+    console.log('✅ Import fix completato!');
+  } catch (error) {
+    console.error('❌ Error:', error);
   }
-});
-
-// Se mancano variabili, mostra un messaggio di errore
-if (missingVars.length > 0) {
-  console.error(`
-===============================================================================
-ERRORE: Mancano le seguenti variabili d'ambiente richieste nel deploy Vercel:
-${missingVars.map(v => `  - ${v}`).join('\n')}
-
-Assicurati di impostare queste variabili nelle impostazioni del progetto su Vercel:
-1. Vai alla dashboard di Vercel
-2. Seleziona il tuo progetto
-3. Vai a "Settings" > "Environment Variables"
-4. Aggiungi le variabili mancanti
-===============================================================================
-`);
-  process.exit(1);
 }
 
-// Verifica le chiavi API opzionali
-const optionalKeys = ['YOUTUBE_API_KEY_2', 'YOUTUBE_API_KEY_3', 'YOUTUBE_API_KEY_4'];
-const availableKeys = optionalKeys.filter(key => process.env[key]);
-
-console.log(`
-===============================================================================
-CONFIGURAZIONE API YOUTUBE
-===============================================================================
-- YOUTUBE_API_KEY_1: Configurata
-- Chiavi aggiuntive: ${availableKeys.length} configurate
-
-Numero totale di chiavi API YouTube disponibili: ${1 + availableKeys.length}
-===============================================================================
-`);
-
-// Verifica la connessione al database
-console.log(`
-===============================================================================
-CONFIGURAZIONE DATABASE
-===============================================================================
-- DATABASE_URL: Configurata
-
-NOTA: Assicurati che:
-1. La connessione al database sia configurata correttamente
-2. Le tabelle del database siano state create correttamente
-===============================================================================
-`);
-
-console.log("Verifica delle configurazioni completata con successo!");
+// Esegui il fix
+fixImports();
