@@ -4,22 +4,17 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": null,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/index.js"
+      "src": "/api/(.*)",
+      "dest": "/index.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.js"
+      "src": "/(.*)",
+      "dest": "/index.js"
     }
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "index.js": {
-      "runtime": "@vercel/node@3.0.0"
-    }
   }
 }
