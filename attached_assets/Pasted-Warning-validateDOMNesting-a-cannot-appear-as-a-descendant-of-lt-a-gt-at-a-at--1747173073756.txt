@@ -1,0 +1,39 @@
+Warning: validateDOMNesting(...): <a> cannot appear as a descendant of &lt;a&gt;.
+    at a
+    at a
+    at https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=ec95679a:337:18
+    at li
+    at ul
+    at nav
+    at div
+    at div
+    at Sidebar (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/components/Sidebar.tsx?t=1747173009020:43:22)
+    at div
+    at Layout (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/components/Layout.tsx?t=1747173009020:24:34)
+    at Provider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-JCDXHMNF.js?v=ec95679a:38:15)
+    at TooltipProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=ec95679a:58:5)
+    at PlayerProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/hooks/use-player.ts:6:34)
+    at AuthProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/hooks/use-auth.ts:8:32)
+    at App
+    at QueryClientProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=ec95679a:2805:3)
+at a
+at a
+at https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=ec95679a:337:18
+at li
+at ul
+at nav
+at div
+at div
+at Sidebar (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/components/Sidebar.tsx?t=1747173009020:43:22)
+at div
+at Layout (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/components/Layout.tsx?t=1747173009020:24:34)
+at Provider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-JCDXHMNF.js?v=ec95679a:38:15)
+at TooltipProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=ec95679a:58:5)
+at PlayerProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/hooks/use-player.ts:6:34)
+at AuthProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/src/hooks/use-auth.ts:8:32)
+at App
+at QueryClientProvider (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=ec95679a:2805:3)
+at t.value (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://8ba36e11-371d-4317-83bb-dca5d5ad9d62-00-37ymcsqm4y0ru.worf.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
